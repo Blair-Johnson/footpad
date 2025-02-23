@@ -5,6 +5,7 @@
 #include "esp_log.h"
 
 #include "driver/gpio.h"
+#include "Adafruit_VL53L1X.h"
 
 extern "C" void app_main()
 {
@@ -12,13 +13,11 @@ extern "C" void app_main()
   initArduino();
   ESP_LOGI("APP_MAIN", "Post initArduino()\n");
 
-  /*
   // Arduino-like setup()
   Serial.begin(115200);
   while(!Serial){
     ; // wait for serial port to connect
   }
-  */
 
   // Arduino-like loop()
   while(true){
