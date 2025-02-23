@@ -17,16 +17,7 @@ Adafruit_VL53L1X vl53 = Adafruit_VL53L1X(SHUTDOWN_PIN, IRQ_PIN);
 
 extern "C" void app_main()
 {
-  ESP_LOGI("APP_MAIN", "Pre initArduino()\n");
   initArduino();
-  ESP_LOGI("APP_MAIN", "Post initArduino()\n");
-
-  // Arduino-like setup()
-  Serial.begin(115200);
-  while(!Serial){
-    ; // wait for serial port to connect
-  }
-  ESP_LOGI("APP_MAIN", "Serial connected.\n");
   ESP_LOGI("APP_MAIN", "Adafruit VL53L1X sensor demo.\n");
 
 
@@ -47,8 +38,8 @@ extern "C" void app_main()
   vl53.setTimingBudget(50);
   ESP_LOGI("APP_MAIN", "vl53 timing budget set: %d\n", vl53.getTimingBudget());
 
+  vl53.setROI(2, 2);
 
-  // Arduino-like loop()
   int16_t distance;
   while(true){
       if (vl53.dataReady()){
@@ -61,8 +52,6 @@ extern "C" void app_main()
           vl53.clearInterrupt();
       }
       distance = -1;
-      vTaskDelay(10 / portTICK_PERIOD_MS);
+      vTaskDelay(50 / portTICK_PERIOD_MS);
   }
-
-  // WARNING: if program reaches end of function app_main() the MCU will restart.
 }
