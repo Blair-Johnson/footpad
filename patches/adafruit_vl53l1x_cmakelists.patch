@@ -1,7 +1,0 @@
-diff --git a/components/Adafruit_VL53L1X b/components/Adafruit_VL53L1X
-index 77801c2..9c768b5 160000
---- a/components/Adafruit_VL53L1X
-+++ b/components/Adafruit_VL53L1X
-@@ -1 +1 @@
--Subproject commit 77801c2692058d0b40d7b29605ceae7604e4e80c
-+Subproject commit 9c768b50e3eb2395bdf9de4765c37968b2ddde68
